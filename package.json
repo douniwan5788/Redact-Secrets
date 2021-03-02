@@ -1,0 +1,74 @@
+{
+	"name": "redact-secrets",
+	"displayName": "Redact Secrets",
+	"description": "Redact secrets chars",
+	"version": "0.0.1",
+	"publisher": "douniwan",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/douniwan5788/Redact-Secrets.git"
+	},
+	"engines": {
+		"vscode": "^1.53.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onCommand:redact-secrets.redact"
+	],
+	"main": "./out/extension.js",
+	"contributes": {
+		"configuration": [
+			{
+				"title": "Redact Secrets",
+				"properties": {
+					"redact-secrets.secrets_pattern": {
+						"type": "string",
+						"default": "[^\\s\\x00-\\x20,.:'\"()\\[\\]\\{\\}]",
+						"description": "match secret chars"
+					},
+					"redact-secrets.mask_char": {
+						"type": "string",
+						"default": "░",
+						"description": "mask char"
+					}
+				}
+			}
+		],
+		"commands": [
+			{
+				"command": "redact-secrets.redact",
+				"title": "Redact"
+			}
+		],
+		"keybindings": [
+			{
+				"command": "redact-secrets.redact",
+				"key": "ctrl+k ctrl+d",
+				"when": "editorTextFocus && !editorReadonly"
+			}
+		]
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"pretest": "npm run compile && npm run lint",
+		"lint": "eslint src --ext ts",
+		"test": "node ./out/test/runTest.js"
+	},
+	"devDependencies": {
+		"@types/vscode": "^1.53.0",
+		"@types/glob": "^7.1.3",
+		"@types/mocha": "^8.0.4",
+		"@types/node": "^12.11.7",
+		"eslint": "^7.19.0",
+		"@typescript-eslint/eslint-plugin": "^4.14.1",
+		"@typescript-eslint/parser": "^4.14.1",
+		"glob": "^7.1.6",
+		"mocha": "^8.2.1",
+		"typescript": "^4.1.3",
+		"vscode-test": "^1.5.0"
+	}
+}
