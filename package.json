@@ -2,7 +2,7 @@
 	"name": "redact-secrets",
 	"displayName": "Redact Secrets",
 	"description": "Redact secrets chars",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"publisher": "douniwan",
 	"repository": {
 		"type": "git",
